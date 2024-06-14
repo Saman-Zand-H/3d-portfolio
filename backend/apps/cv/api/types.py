@@ -12,6 +12,9 @@ class LogoType(DjangoObjectType):
             model.alt.field.name,
             model.slug.field.name,
         ]
+        filter_fields = {
+            "slug": ["iexact"],
+        }
 
 
 class SkillType(DjangoObjectType):
@@ -26,6 +29,10 @@ class SkillType(DjangoObjectType):
             model.logo.field.name,
             model.description.field.name,
         ]
+        filter_fields = {
+            "name": ["exact", "icontains"],
+            "is_competency": ["exact"],
+        }
         interfaces = (graphene.relay.Node,)
 
 
@@ -36,6 +43,9 @@ class PresentationTypeType(DjangoObjectType):
             model._meta.pk.name,
             model.name.field.name,
         ]
+        filter_fields = {
+            model.name.field.name: ["exact", "icontains"],
+        }
 
 
 class PresentationDcoumentType(DjangoObjectType):
@@ -46,6 +56,9 @@ class PresentationDcoumentType(DjangoObjectType):
             model.file.field.name,
             model.description.field.name,
         ]
+        filter_fields = {
+            "description": ["exact", "icontains"],
+        }
 
 
 class PresentationType(DjangoObjectType):
@@ -62,6 +75,12 @@ class PresentationType(DjangoObjectType):
             model.presentation_type.field.name,
             "documents",
         ]
+        filter_fields = {
+            "title": ["exact", "icontains"],
+            "description": ["exact", "icontains"],
+            "date": ["exact", "icontains"],
+            "presentation_type": ["exact"],
+        }
         interfaces = (graphene.relay.Node,)
 
 
@@ -72,6 +91,9 @@ class PositionType(DjangoObjectType):
             model._meta.pk.name,
             model.name.field.name,
         ]
+        filter_fields = {
+            "name": ["exact", "icontains"],
+        }
 
 
 class CompanyType(DjangoObjectType):
@@ -85,6 +107,10 @@ class CompanyType(DjangoObjectType):
             model.logo.field.name,
             model.website.field.name,
         ]
+        filter_fields = {
+            "name": ["exact", "icontains"],
+            "website": ["exact", "icontains"],
+        }
 
 
 class WorkExperienceType(DjangoObjectType):
@@ -100,6 +126,11 @@ class WorkExperienceType(DjangoObjectType):
             model.cooperation_range.field.name,
             model.description.field.name,
         ]
+        filter_fields = {
+            "position": ["exact"],
+            "company": ["exact"],
+            "description": ["exact", "icontains"],
+        }
         interfaces = (graphene.relay.Node,)
         
 
@@ -110,6 +141,9 @@ class ResearchTypeType(DjangoObjectType):
             model._meta.pk.name,
             model.name.field.name,
         ]
+        filter_fields = {
+            "name": ["exact", "icontains"],
+        }
 
 
 class PublisherType(DjangoObjectType):
@@ -123,6 +157,10 @@ class PublisherType(DjangoObjectType):
             model.logo.field.name,
             model.website.field.name,
         ]
+        filter_fields = {
+            "name": ["exact", "icontains"],
+            "website": ["exact", "icontains"],
+        }
         
         
 class ResearchDocumentType(DjangoObjectType):
@@ -133,6 +171,9 @@ class ResearchDocumentType(DjangoObjectType):
             model.file.field.name,
             model.description.field.name,
         ]
+        filter_fields = {
+            "description": ["exact", "icontains"],
+        }
         
         
 class ResearchType(DjangoObjectType):
@@ -151,6 +192,13 @@ class ResearchType(DjangoObjectType):
             model.research_type.field.name,
             "documents",
         ]
+        filter_fields = {
+            "title": ["exact", "icontains"],
+            "description": ["exact", "icontains"],
+            "date": ["exact", "icontains"],
+            "publisher": ["exact"],
+            "research_type": ["exact"],
+        }
         interfaces = (graphene.relay.Node,)
         
         
@@ -164,6 +212,11 @@ class CertificateType(DjangoObjectType):
             model.file.field.name,
             model.date.field.name,
         ]
+        filter_fields = {
+            "title": ["exact", "icontains"],
+            "description": ["exact", "icontains"],
+            "date": ["exact", "icontains"],
+        }
         interfaces = (graphene.relay.Node,)
         
         
@@ -175,6 +228,10 @@ class LanguageType(DjangoObjectType):
             model.name.field.name,
             model.proficiency.field.name,
         ]
+        filter_fields = {
+            "name": ["exact", "icontains"],
+            "proficiency": ["exact"],
+        }
         interfaces = (graphene.relay.Node,)
         
         
@@ -185,16 +242,22 @@ class SettingKeyType(DjangoObjectType):
             model._meta.pk.name,
             model.key.field.name,
         ]
+        filter_fields = {
+            "key": ["exact", "icontains"],
+        }
         
         
 class SettingType(DjangoObjectType):
     class Meta:
-        model = models.Setting
+        model = models.FileSetting
         fields = [
             model._meta.pk.name,
             model.key.field.name,
             model.value.field.name,
         ]
+        filter_fields = {
+            "key": ["exact"],
+        }
         interfaces = (graphene.relay.Node,)
         
 
@@ -208,6 +271,11 @@ class EducationType(DjangoObjectType):
             model.description.field.name,
             model.education_range.field.name,
         ]
+        filter_fields = {
+            "major": ["exact", "icontains"],
+            "degree": ["exact", "icontains"],
+            "description": ["exact", "icontains"],
+        }
         interfaces = (graphene.relay.Node,)
         
         
@@ -218,6 +286,9 @@ class ProjectTypeType(DjangoObjectType):
             model._meta.pk.name,
             model.name.field.name,
         ]
+        filter_fields = {
+            "name": ["exact", "icontains"],
+        }
         
 
 class ProjectPropertyValueType(DjangoObjectType):
@@ -244,4 +315,9 @@ class ProjectType(DjangoObjectType):
             model.project_type.field.name,
             "properties",
         ]
+        filter_fields = {
+            "title": ["exact", "icontains"],
+            "description": ["exact", "icontains"],
+            "project_type": ["exact"],
+        }
         interfaces = (graphene.relay.Node,)

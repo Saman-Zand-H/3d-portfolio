@@ -1,9 +1,15 @@
+import mimetypes
+
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django_jalali.db.models import jDateField
 from django.db.models import F
+from django.core.validators import FileExtensionValidator
+from django.core.exceptions import ValidationError
 from django.db.models.functions import Concat
 from django.contrib.postgres.fields import DateRangeField
+
+from .constants import VALID_FILE_SETTING_MIMES
 
 
 class Logo(models.Model):
@@ -423,6 +429,25 @@ class Setting(models.Model):
 
     def __str__(self):
         return f"{self.key} - {self.value}"
+
+    class Meta:
+        verbose_name = _("Setting")
+        verbose_name_plural = _("Settings")
+        ordering = ["key"]
+
+
+class FileSetting(models.Model):
+    key = models.ForeignKey(SettingKey, on_delete=models.CASCADE, verbose_name=_("Key"))
+    value = models.FileField(upload_to="settings/", verbose_name=_("Value"), validators=[FileExtensionValidator(allowed_extensions=VALID_FILE_SETTING_MIMES.values())])
+
+    def __str__(self):
+        return f"{self.key} - {self.value}"
+    
+    def clean(self):
+        super().clean()
+        mime_type, _ = mimetypes.guess_type(self.value.path)
+        if mime_type not in VALID_FILE_SETTING_MIMES:
+            raise ValidationError(_("Invalid file type"))
 
     class Meta:
         verbose_name = _("Setting")

@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 sys.path.append(os.path.join(BASE_DIR, "apps"))
 
-load_dotenv(BASE_DIR.parent)
+load_dotenv()
 
 SECRET_KEY = os.environ.get(
     "SECRET_KEY",
@@ -26,15 +26,16 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "user.apps.UserConfig",
     
     "allauth",
     "allauth.account",
     'rest_framework',
     'rest_framework.authtoken',
     "dj_rest_auth",
+    "django_filters",
     "graphene_django",
     
-    "user.apps.UserConfig",
     "cv",
 ]
 

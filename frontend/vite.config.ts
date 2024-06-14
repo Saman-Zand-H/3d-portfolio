@@ -1,24 +1,26 @@
-/// <reference types="vitest" />
-/// <reference types="vite/client" />
-
-import react from '@vitejs/plugin-react';
-import { defineConfig } from 'vite';
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react-swc";
+import tailwindcss from "tailwindcss";
 import viteTsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
-  base: './',
   plugins: [react(), viteTsconfigPaths()],
+  assetsInclude: ['**/*.glb'],
+  css: {
+    postcss: {
+      plugins: [tailwindcss()],
+    },
+  },
+  base: "./",
   server: {
     port: 3000,
   },
-  test: {
-    globals: true,
-    environment: 'jsdom',
-    setupFiles: './src/testing/setup-tests.ts',
-    exclude: ['**/node_modules/**', '**/e2e/**'],
-    coverage: {
-      include: ['src/**'],
+  resolve: {
+    alias: {
+      "~": "/src",
     },
   },
-  optimizeDeps: { exclude: ['fsevents'] },
+  preview: {
+    port: 3000,
+  },
 });

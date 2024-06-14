@@ -1,6 +1,6 @@
 from . import types
 import graphene
-from graphene_django import DjangoConnectionField as DjangoFilterConnectionField 
+from graphene_django.filter import DjangoFilterConnectionField 
 
 
 class Query(graphene.ObjectType):
