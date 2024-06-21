@@ -1,9 +1,10 @@
 import { Canvas, Vector3 } from '@react-three/fiber';
 import { Suspense, useState } from 'react';
-import Loader from '../../components/loader';
-import { ForestHouse } from '../../models/ForestHouse';
+import Loader from '../../components/Loader';
+import { Volcano } from '../../models/Volcano';
 import { Sky } from '../../models/Sky';
-import { Plane } from '../../models/Plane';
+import { Ship } from '../../models/Ship';
+import Navbar from '../../components/Navbar';
 
 const Home = () => {
   const adjustScreen = () => {
@@ -13,7 +14,7 @@ const Home = () => {
       screenScale = [0.9, 0.9, 0.9];
       screenPosition = [0, -6.5, -43.4];
     } else {
-      screenScale = [0.023, 0.023, 0.023];
+      screenScale = [0.026, 0.026, 0.026];
       screenPosition = [0, -14, -53.4];
     }
 
@@ -25,6 +26,7 @@ const Home = () => {
 
   return (
     <section className="relative h-screen w-full bg-[#3f2e0f98]">
+      <Navbar />
       <Canvas
         className={`h-screen w-full bg-transparent ${isRotating ? 'cursor-grabbing' : 'cursor-grab'}`}
         camera={{ near: 0.001, far: 30000, rotation: [Math.PI / 12, 0, 0] }}
@@ -46,18 +48,17 @@ const Home = () => {
             rotation={[Math.PI / 4, 0, 0]}
             isRotating={isRotating}
           />
-          <Plane
-            scale={[1.2, 1.2, 1.2]}
-            position={[0, 7, -13]}
-            rotation={[Math.PI / 4, -Math.PI / 2, 0]}
-            isRotating={isRotating}
-          />
-          <ForestHouse
-            scale={screenScale}
-            position={screenPosition}
-            rotation={[Math.PI / 12, -Math.PI / 3, 0]}
+          <Volcano
+            scale={[0.0011, 0.0011, 0.0011]}
+            position={[0, -0.2, -11]}
             isRotating={isRotating}
             setIsRotating={setIsRotating}
+          />
+          <Ship
+            scale={[0.002, 0.002, 0.002]}
+            position={[0.2, -0.2, 3.2]}
+            rotation={[0, Math.PI / 2, 0]}
+            isRotation={isRotating}
           />
         </Suspense>
       </Canvas>
