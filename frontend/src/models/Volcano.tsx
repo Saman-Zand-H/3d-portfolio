@@ -11,7 +11,7 @@ import { useEffect, useRef } from 'react';
 import { useGLTF } from '@react-three/drei';
 import { GLTF } from 'three-stdlib';
 import scene from '../assets/3d/volcano/scene.glb';
-import { useThree } from '@react-three/fiber';
+import { useFrame, useThree } from '@react-three/fiber';
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -62,6 +62,7 @@ export function Volcano(props: VolcanoProps) {
   const lastX = useRef(0);
   const rotationSpeed = useRef(0);
   const { gl, viewport } = useThree();
+  const dampingFactor = 0.95;
 
   const handlePointerDown = (e: PointerEvent) => {
     e.stopPropagation();
@@ -104,6 +105,18 @@ export function Volcano(props: VolcanoProps) {
       canvas.removeEventListener('pointermove', handlePointerMove);
     };
   }, [gl, handlePointerDown, handlePointerUp, handlePointerMove]);
+
+  useFrame(() => {
+    if (isRotating) return;
+
+    rotationSpeed.current *= dampingFactor;
+
+    if (Math.abs(rotationSpeed.current) < 0.001) {
+      rotationSpeed.current = 0;
+    }
+
+    volcanoRef.current.rotation.y += rotationSpeed.current;
+  });
 
   return (
     <group {...props} dispose={null} ref={volcanoRef}>
