@@ -10,7 +10,6 @@ import (
 
 func main() {
 	config.LoadConfig()
-
 	db.ConnectMongoDB(config.AppConfig.MongoURI, config.AppConfig.MongoDB)
 
 	router := gin.Default()
