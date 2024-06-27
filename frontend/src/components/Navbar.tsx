@@ -12,26 +12,17 @@ const Navbar = () => {
       <div className="flex items-center space-x-4">
         <a
           href="https://cv.samanznd.com"
-          className="rounded-md bg-stone-200/40 px-2 py-1 text-stone-800"
+          className="rounded-md px-2 py-1 text-stone-800"
         >
           CV
         </a>
-        <a
-          href="#gallery"
-          className="rounded-md bg-stone-200/40 px-2 py-1 text-stone-800"
-        >
+        <a href="#gallery" className="rounded-md px-2 py-1 text-stone-800">
           Projects
         </a>
-        <Link
-          to={'/about'}
-          className="rounded-md bg-stone-200/40 px-2 py-1 text-stone-800"
-        >
+        <Link to={'/about'} className="rounded-md px-2 py-1 text-stone-800">
           About
         </Link>
-        <a
-          href="#contact"
-          className="rounded-md bg-stone-200/40 px-2 py-1 text-stone-800"
-        >
+        <a href="#contact" className="rounded-md px-2 py-1 text-stone-800">
           Contact
         </a>
       </div>

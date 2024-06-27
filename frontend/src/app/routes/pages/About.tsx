@@ -1,88 +1,12 @@
 import Navbar from '../../../components/Navbar';
-import {
-  VerticalTimelineElement,
-  VerticalTimeline,
-} from 'react-vertical-timeline-component';
+import { VerticalTimeline } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 import ContactCard from '../../../components/ContactCard';
 import SkillCard from '../../../features/landing/components/SkillCard';
 import ExperienceCard from '../../../features/landing/components/ExperienceCard';
+import { skills, experiences } from '../../../features/landing/constants';
 
 const About = () => {
-  const skills = [
-    {
-      name: 'HTML',
-      imageUrl: '/images/html.svg',
-    },
-    {
-      name: 'CSS',
-      imageUrl: '/images/css.svg',
-    },
-    {
-      name: 'JavaScript',
-      imageUrl: '/images/javascript.svg',
-    },
-    {
-      name: 'React',
-      imageUrl: '/images/react.svg',
-    },
-    {
-      name: 'Node.js',
-      imageUrl: '/images/nodejs.svg',
-    },
-    {
-      name: 'MongoDB',
-      imageUrl: '/images/mongodb.svg',
-    },
-    {
-      name: 'MySQL',
-      imageUrl: '/images/mysql.svg',
-    },
-    {
-      name: 'Git',
-      imageUrl: '/images/git.svg',
-    },
-  ];
-
-  const experiences = [
-    {
-      company_name: 'Google',
-      title: 'Software Engineer',
-      date: '2019 - Present',
-      icon: '/images/google.svg',
-      iconBg: '#4285F4',
-      points: [
-        'Developed and maintained the Google search engine.',
-        'Worked on the Google Maps API.',
-        'Collaborated with the Google Cloud team.',
-      ],
-    },
-    {
-      company_name: 'Facebook',
-      title: 'Frontend Developer',
-      date: '2017 - 2019',
-      icon: '/images/facebook.svg',
-      iconBg: '#1877F2',
-      points: [
-        'Designed and implemented the Facebook news feed.',
-        'Worked on the Facebook Ads platform.',
-        'Collaborated with the Facebook AI team.',
-      ],
-    },
-    {
-      company_name: 'Amazon',
-      title: 'Full Stack Developer',
-      date: '2015 - 2017',
-      icon: '/images/amazon.svg',
-      iconBg: '#FF9900',
-      points: [
-        'Developed and maintained the Amazon website.',
-        'Worked on the Amazon Web Services platform.',
-        'Collaborated with the Amazon Alexa team.',
-      ],
-    },
-  ];
-
   return (
     <>
       <Navbar />
@@ -106,7 +30,7 @@ const About = () => {
         </div>
 
         <div className="flex flex-col py-10">
-          <h3 className="subhead-text">Mys Skills</h3>
+          <h3 className="subhead-text">My Skills</h3>
 
           <div className="mt-16 flex flex-wrap gap-12">
             {skills.map((skill, _) => (
@@ -126,8 +50,8 @@ const About = () => {
 
           <div className="mt-12 flex">
             <VerticalTimeline>
-              {experiences.map((experience, _) => (
-                <ExperienceCard experience={experience} />
+              {experiences.map((experience, index) => (
+                <ExperienceCard experience={experience} key={index} />
               ))}
             </VerticalTimeline>
           </div>

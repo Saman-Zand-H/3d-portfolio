@@ -21,6 +21,7 @@ func SaveSkill(skill *personal.Skill, image io.Reader, filename, contentType str
 	if err != nil {
 		return err
 	}
+
 	defer uploadStream.Close()
 
 	_, err = io.Copy(uploadStream, image)
@@ -33,7 +34,12 @@ func SaveSkill(skill *personal.Skill, image io.Reader, filename, contentType str
 	skill.Image.ContentType = contentType
 
 	collection := db.Client.Database(config.AppConfig.MongoDB).Collection(collectionName)
-	_, err = collection.InsertOne(context.TODO(), skill)
+	
+	if skill.ID.IsZero() {
+		_, err = collection.InsertOne(context.TODO(), skill)
+	} else {
+		_, err = collection.ReplaceOne(context.TODO(), bson.M{"_id": skill.ID}, skill)
+	}
 	if err != nil {
 		return err
 	}
@@ -41,7 +47,20 @@ func SaveSkill(skill *personal.Skill, image io.Reader, filename, contentType str
 	return nil
 }
 
-func GetSkillByID(id primitive.ObjectID) (*personal.Skill, []byte, error) {
+func SkillExists(id int) (bool, error) {
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+
+	collection := db.Client.Database(config.AppConfig.MongoDB).Collection("skills")
+	count, err := collection.CountDocuments(ctx, bson.M{"_id": id})
+	if err != nil {
+		return false, err
+	}
+
+	return count > 0, nil
+}
+
+func GetSkillByID(id int) (*personal.Skill, []byte, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 
