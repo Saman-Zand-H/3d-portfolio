@@ -6,7 +6,6 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-
 func ListSkills(c *gin.Context) {
 	skills, err := utils.GetAllSkills()
 	if err != nil {

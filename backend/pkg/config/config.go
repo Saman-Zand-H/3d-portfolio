@@ -10,10 +10,9 @@ import (
 )
 
 type Config struct {
-    MongoURI string
-    MongoDB  string
+	MongoURI string
+	MongoDB  string
 }
-
 
 var AppConfig Config
 
@@ -32,19 +31,19 @@ func LoadConfig() {
 		log.Fatalf("Error loading config file")
 	}
 	viper.SetConfigFile(configFile)
-    viper.SetConfigType("yaml")
-    viper.AutomaticEnv()
+	viper.SetConfigType("yaml")
+	viper.AutomaticEnv()
 
 	viper.SetEnvPrefix("backend")
 	viper.BindEnv("mongo.uri", "MONGO_URI")
-    viper.BindEnv("mongo.database", "MONGO_DB")
+	viper.BindEnv("mongo.database", "MONGO_DB")
 
-    if err := viper.ReadInConfig(); err != nil {
-        log.Fatalf("Error reading config file: %s", err)
-    }
+	if err := viper.ReadInConfig(); err != nil {
+		log.Fatalf("Error reading config file: %s", err)
+	}
 
-    if err := viper.Unmarshal(&AppConfig); err != nil {
-        log.Fatalf("Unable to decode config into struct: %s", err)
-    }
+	if err := viper.Unmarshal(&AppConfig); err != nil {
+		log.Fatalf("Unable to decode config into struct: %s", err)
+	}
 
 }
