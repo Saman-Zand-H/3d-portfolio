@@ -1,9 +1,10 @@
 import { Canvas, Vector3 } from '@react-three/fiber';
 import { Suspense, useState } from 'react';
+import HomeStage from '../../../features/landing/components/HomeStage';
 import Loader from '../../../components/Loader';
-import { Volcano } from '../../../models/Volcano';
-import { Sky } from '../../../models/Sky';
-import { Ship } from '../../../models/Ship';
+import { Volcano } from '../../../features/landing/models/Volcano';
+import { Sky } from '../../../features/landing/models/Sky';
+import { Ship } from '../../../features/landing/models/Ship';
 import Navbar from '../../../components/Navbar';
 
 const Home = () => {
@@ -53,10 +54,16 @@ const Home = () => {
   const { volcanoScale, volcanoPosition } = adjustVolcano();
   const { shipScale, shipPosition } = adjustShip();
   const [isRotating, setIsRotating] = useState(false);
+  const [currentStage, setCurrentStage] = useState<number | null>(1);
 
   return (
-    <section className="relative h-screen w-full bg-[#3f2e0f98]">
+    <section className="relative h-screen w-full bg-[#538392]">
       <Navbar />
+
+      <div className="absolute left-0 right-0 top-28 z-10 flex items-center justify-center">
+        {currentStage && <HomeStage currentStage={currentStage} />}
+      </div>
+
       <Canvas
         className={`h-screen w-full bg-transparent ${isRotating ? 'cursor-grabbing' : 'cursor-grab'}`}
         camera={{
@@ -66,7 +73,7 @@ const Home = () => {
           position: [0, 4, 6.5],
         }}
       >
-        <Suspense fallback={<Loader />}>
+        <Suspense fallback={<Loader color="white" />}>
           <directionalLight position={[1, 1, 1]} intensity={2} />
           <ambientLight intensity={0.5} />
           <pointLight position={[10, 5, 10]} intensity={2} />
@@ -89,6 +96,7 @@ const Home = () => {
             rotation={[0, Math.PI / 3, 0]}
             isRotating={isRotating}
             setIsRotating={setIsRotating}
+            setCurrentStage={setCurrentStage}
           />
           <Ship
             scale={shipScale}

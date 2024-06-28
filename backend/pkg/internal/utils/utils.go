@@ -34,7 +34,7 @@ func SaveSkill(skill *personal.Skill, image io.Reader, filename, contentType str
 	skill.Image.ContentType = contentType
 
 	collection := db.Client.Database(config.AppConfig.MongoDB).Collection(collectionName)
-	
+
 	if skill.ID.IsZero() {
 		_, err = collection.InsertOne(context.TODO(), skill)
 	} else {

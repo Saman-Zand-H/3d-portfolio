@@ -10,21 +10,32 @@ const Navbar = () => {
         </span>
       </Link>
       <div className="flex items-center space-x-4">
-        <a
-          href="https://cv.samanznd.com"
-          className="rounded-md px-2 py-1 text-stone-800"
-        >
-          CV
-        </a>
-        <a href="#gallery" className="rounded-md px-2 py-1 text-stone-800">
-          Projects
-        </a>
-        <Link to={'/about'} className="rounded-md px-2 py-1 text-stone-800">
-          About
-        </Link>
-        <a href="#contact" className="rounded-md px-2 py-1 text-stone-800">
-          Contact
-        </a>
+        <div className="rounded-3xl bg-white/40 px-3 py-2">
+          <a
+            href="https://cv.samanznd.com"
+            className="rounded-md px-2 py-1 text-stone-800 transition-all delay-100 hover:bg-white/5 hover:text-black"
+          >
+            CV
+          </a>
+          <Link
+            to={'/projects'}
+            className="rounded-md px-2 py-1 text-stone-800 transition-all delay-100 hover:bg-white/5 hover:text-black"
+          >
+            Projects
+          </Link>
+          <Link
+            to={'/about'}
+            className="rounded-md px-2 py-1 text-stone-800 transition-all delay-100 hover:bg-white/5 hover:text-black"
+          >
+            About
+          </Link>
+          <Link
+            to={'/contact'}
+            className="rounded-md px-2 py-1 text-stone-800 transition-all delay-100 hover:bg-white/5 hover:text-black"
+          >
+            Contact
+          </Link>
+        </div>
       </div>
     </nav>
   );

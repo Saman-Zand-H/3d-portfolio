@@ -18,6 +18,7 @@ import nextjs from './nextjs.svg';
 import hummersBroker from './hummers-broker.svg';
 import nginx from './nginx.svg';
 import antdesign from './antdesign.svg';
+import finnotech from './finnotech.svg';
 import postgresql from './postgresql.svg';
 import rabbitmq from './rabbitmq.svg';
 import redis from './redis.svg';
@@ -29,7 +30,11 @@ import tensorflow from './tensorflow.svg';
 import threejs from './threejs.svg';
 import typescript from './typescript.svg';
 import vite from './vite.svg';
+import cocalc from './cocalc.svg';
+import sheetTable from './sheet-table.svg';
 import limerz from './limerz.svg';
+import arrow from './arrow.svg';
+import menu from './menu.svg';
 import connect from './connect-isti.svg';
 import tasmim from './tasmim.svg';
 import vue from './vuejs.svg';
@@ -38,9 +43,14 @@ export {
   nodejs,
   react,
   htmx,
+  menu,
+  cocalc,
   limerz,
   connect,
+  finnotech,
   bash,
+  sheetTable,
+  arrow,
   django,
   antdesign,
   git,

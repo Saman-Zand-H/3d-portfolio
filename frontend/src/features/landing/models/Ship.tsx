@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { useEffect, useRef } from 'react';
 import { useGLTF, useAnimations } from '@react-three/drei';
 import { GLTF } from 'three-stdlib';
-import scene from '../assets/3d/ship/scene.glb';
+import scene from '../../../assets/3d/ship/scene.glb';
 
 type GLTFResult = GLTF & {
   nodes: {

@@ -1,14 +1,8 @@
 import { VerticalTimelineElement } from 'react-vertical-timeline-component';
+import { Experience } from '../types';
 
 type ExperienceCardProps = {
-  experience: {
-    company_name: string;
-    title: string;
-    date: string;
-    icon: string;
-    iconBg: string;
-    points: string[];
-  };
+  experience: Experience;
 };
 
 const ExperienceCard = (props: ExperienceCardProps) => {

@@ -7,7 +7,7 @@ import { useRef } from 'react';
 import { useGLTF } from '@react-three/drei';
 import { GLTF } from 'three-stdlib';
 import { useFrame } from '@react-three/fiber';
-import scene from '../assets/3d/sky/scene.glb';
+import scene from '../../../assets/3d/sky/scene.glb';
 
 type GLTFResult = GLTF & {
   nodes: {

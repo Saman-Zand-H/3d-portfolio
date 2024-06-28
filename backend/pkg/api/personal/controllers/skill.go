@@ -40,7 +40,7 @@ func CreateSkills(c *gin.Context) {
 	}
 
 	defer imageFile.Close()
-	
+
 	imageFileName := image.Filename
 	if err := utils.SaveSkill(&skill, imageFile, imageFileName, image.Header.Get("Content-Type")); err != nil {
 		c.JSON(500, gin.H{"error": err.Error()})
@@ -79,7 +79,7 @@ func UpdateSkills(c *gin.Context) {
 	}
 
 	defer imageFile.Close()
-	
+
 	imageFileName := image.Filename
 	if err := utils.SaveSkill(&skill, imageFile, imageFileName, image.Header.Get("Content-Type")); err != nil {
 		c.JSON(500, gin.H{"error": err.Error()})

@@ -10,7 +10,7 @@ import * as THREE from 'three';
 import { useEffect, useRef } from 'react';
 import { useGLTF } from '@react-three/drei';
 import { GLTF } from 'three-stdlib';
-import scene from '../assets/3d/volcano/scene.glb';
+import scene from '../../../assets/3d/volcano/scene.glb';
 import { useFrame, useThree } from '@react-three/fiber';
 
 type GLTFResult = GLTF & {
@@ -53,12 +53,17 @@ type GLTFResult = GLTF & {
 type VolcanoProps = JSX.IntrinsicElements['group'] & {
   isRotating: boolean;
   setIsRotating: React.Dispatch<React.SetStateAction<boolean>>;
+  setCurrentStage: React.Dispatch<React.SetStateAction<number | null>>;
 };
 
-export function Volcano(props: VolcanoProps) {
+export function Volcano({
+  isRotating,
+  setCurrentStage,
+  setIsRotating,
+  ...props
+}: VolcanoProps) {
   const { nodes, materials } = useGLTF(scene) as GLTFResult;
   const volcanoRef = useRef<THREE.Group>(null!);
-  const { isRotating, setIsRotating } = props;
   const lastX = useRef(0);
   const rotationSpeed = useRef(0);
   const { gl, viewport } = useThree();
@@ -107,7 +112,29 @@ export function Volcano(props: VolcanoProps) {
   }, [gl, handlePointerDown, handlePointerUp, handlePointerMove]);
 
   useFrame(() => {
-    if (isRotating) return;
+    if (isRotating) {
+      const rotation = volcanoRef.current.rotation.y;
+
+      const normalizedRotation =
+        ((rotation % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
+      console.log(normalizedRotation);
+      switch (true) {
+        case normalizedRotation >= 5.45 && normalizedRotation <= 5.85:
+          setCurrentStage(4);
+          break;
+        case normalizedRotation >= 0.85 && normalizedRotation <= 1.3:
+          setCurrentStage(1);
+          break;
+        case normalizedRotation >= 2 && normalizedRotation <= 2.4:
+          setCurrentStage(2);
+          break;
+        case normalizedRotation >= 3 && normalizedRotation <= 4.75:
+          setCurrentStage(3);
+          break;
+        default:
+          setCurrentStage(null);
+      }
+    }
 
     rotationSpeed.current *= dampingFactor;
 
