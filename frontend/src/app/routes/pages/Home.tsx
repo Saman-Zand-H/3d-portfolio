@@ -50,11 +50,24 @@ const Home = () => {
     return { shipScale, shipPosition };
   };
 
+  const adjustCamera = () => {
+    let cameraPosition: Vector3;
+
+    if (window.innerWidth < 768) {
+      cameraPosition = [0, 4, 7];
+    } else {
+      cameraPosition = [0, 4, 6.5];
+    }
+
+    return { cameraPosition };
+  };
+
   const { skyScale, skyPosition } = adjustSky();
   const { volcanoScale, volcanoPosition } = adjustVolcano();
   const { shipScale, shipPosition } = adjustShip();
   const [isRotating, setIsRotating] = useState(false);
   const [currentStage, setCurrentStage] = useState<number | null>(1);
+  const { cameraPosition } = adjustCamera();
 
   return (
     <section className="relative h-screen w-full bg-[#538392]">
@@ -70,7 +83,7 @@ const Home = () => {
           near: 0.001,
           far: 30000,
           rotation: [-Math.PI / 12, 0, 0],
-          position: [0, 4, 6.5],
+          position: cameraPosition,
         }}
       >
         <Suspense fallback={<Loader color="white" />}>
