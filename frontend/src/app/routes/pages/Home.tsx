@@ -60,7 +60,7 @@ const Home = () => {
     <section className="relative h-screen w-full bg-[#538392]">
       <Navbar />
 
-      <div className="absolute left-0 right-0 top-28 z-10 flex items-center justify-center">
+      <div className="absolute left-0 right-0 top-28 z-[5] flex items-center justify-center">
         {currentStage && <HomeStage currentStage={currentStage} />}
       </div>
 
