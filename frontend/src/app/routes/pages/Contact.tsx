@@ -1,12 +1,16 @@
 import { Canvas } from '@react-three/fiber';
 import React, { Suspense, useRef, useState } from 'react';
 import Loader from '../../../components/Loader';
+import { ToastContainer, toast } from 'react-toastify';
 import Navbar from '../../../components/Navbar';
+import emailjs from '@emailjs/browser';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import TelegramIcon from '@mui/icons-material/Telegram';
 import EmailIcon from '@mui/icons-material/Mail';
 
+import 'react-toastify/dist/ReactToastify.min.css';
+import { env } from '../../../config/env';
 import { Fox } from '../../../features/landing/models/Fox';
 
 const Contact = () => {
@@ -15,7 +19,11 @@ const Contact = () => {
   const [loading, setLoading] = useState(false);
   const [currentAnimation, setCurrentAnimation] = useState('idle');
 
-  const handleChange = () => {};
+  const handleChange = ({
+    target: { name, value },
+  }: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
+    setForm({ ...form, [name]: value });
+  };
 
   const handleFocus = () => setCurrentAnimation('walk');
   const handleBlur = () => setCurrentAnimation('idle');
@@ -25,11 +33,42 @@ const Contact = () => {
     setLoading(true);
     setCurrentAnimation('hit');
 
-    alert('Message sent successfully!');
+    emailjs
+      .send(
+        env.EMAILJS_SERVICE_ID,
+        env.EMAILJS_TEMPLATE_ID,
+        {
+          from_name: form.name,
+          to_name: 'JavaScript Mastery',
+          from_email: form.email,
+          to_email: 'sujata@jsmastery.pro',
+          message: form.message,
+        },
+        env.EMAILJS_PUBLIC_KEY,
+      )
+      .then(
+        () => {
+          setLoading(false);
+          toast.success('Thank you for your message', {
+            autoClose: 3000,
+            position: 'bottom-left',
+          });
+        },
+        (_) => {
+          setLoading(false);
+          setCurrentAnimation('idle');
+
+          toast.error("I didn't receive your message", {
+            autoClose: 3000,
+            position: 'bottom-left',
+          });
+        },
+      );
   };
 
   return (
     <>
+      <ToastContainer />
       <Navbar />
       <section className="max-container relative flex flex-col lg:flex-row">
         <div className="flex min-w-[50%] flex-1 flex-col">
