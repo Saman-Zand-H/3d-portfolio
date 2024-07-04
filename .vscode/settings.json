@@ -1,0 +1,7 @@
+{
+    "vs-code-prettier-eslint.prettierLast": true,
+    "reactSnippets.settings.prettierEnabled": true,
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnPaste": true
+}

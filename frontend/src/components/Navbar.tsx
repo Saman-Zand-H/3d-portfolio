@@ -40,7 +40,7 @@ const Navbar = () => {
           </Link>
         </div>
       </div>
-      <div className="flex rounded-2xl bg-slate-300/60 shadow-md">
+      <div className="flex rounded-2xl bg-slate-300/60 shadow-md sm:hidden">
         <button className="p-2" onClick={() => setIsOpen(!isOpen)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"

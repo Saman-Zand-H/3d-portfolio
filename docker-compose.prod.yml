@@ -5,3 +5,12 @@ services:
             - "3000:80"
         volumes:
             - ./frontend:/app
+    
+    nginx:
+        image: nginx:alpine 
+        ports:
+            - "3000:80"
+        volumes:
+            - ./frontend/dist:/usr/share/nginx/html
+        depends_on:
+            - frontend
