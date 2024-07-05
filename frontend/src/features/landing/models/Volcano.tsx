@@ -7,7 +7,7 @@ Title: Volcano Island Lowpoly
 */
 
 import * as THREE from 'three';
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useGLTF } from '@react-three/drei';
 import { GLTF } from 'three-stdlib';
 import scene from '../../../assets/3d/volcano/scene.glb';
@@ -98,16 +98,51 @@ export function Volcano({
     rotationSpeed.current = delta * 0.01 * Math.PI;
   };
 
+  const handleTouchStart = (e: TouchEvent) => {
+    e.stopPropagation();
+    e.preventDefault();
+    setIsRotating(true);
+
+    const clientX = e.touches[0].clientX;
+    lastX.current = clientX;
+  };
+
+  const handleTouchEnd = (e: TouchEvent) => {
+    e.stopPropagation();
+    e.preventDefault();
+    setIsRotating(false);
+  };
+
+  const handleTouchMove = (e: TouchEvent) => {
+    e.stopPropagation();
+    e.preventDefault();
+
+    if (isRotating) {
+      const clientX = e.touches[0].clientX;
+      const delta = (clientX - lastX.current) / viewport.width;
+
+      volcanoRef.current.rotation.y += delta * 0.01 * Math.PI;
+      lastX.current = clientX;
+      rotationSpeed.current = delta * 0.01 * Math.PI;
+    }
+  };
+
   useEffect(() => {
     const canvas = gl.domElement;
     canvas.addEventListener('pointerdown', handlePointerDown);
     canvas.addEventListener('pointerup', handlePointerUp);
     canvas.addEventListener('pointermove', handlePointerMove);
+    canvas.addEventListener('touchstart', handleTouchStart);
+    canvas.addEventListener('touchend', handleTouchEnd);
+    canvas.addEventListener('touchmove', handleTouchMove);
 
     return () => {
       canvas.removeEventListener('pointerdown', handlePointerDown);
       canvas.removeEventListener('pointerup', handlePointerUp);
       canvas.removeEventListener('pointermove', handlePointerMove);
+      canvas.removeEventListener('touchstart', handleTouchStart);
+      canvas.removeEventListener('touchend', handleTouchEnd);
+      canvas.removeEventListener('touchmove', handleTouchMove);
     };
   }, [gl, handlePointerDown, handlePointerUp, handlePointerMove]);
 
@@ -117,7 +152,7 @@ export function Volcano({
 
       const normalizedRotation =
         ((rotation % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
-      console.log(normalizedRotation);
+
       switch (true) {
         case normalizedRotation >= 5.45 && normalizedRotation <= 5.85:
           setCurrentStage(4);

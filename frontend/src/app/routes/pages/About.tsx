@@ -32,7 +32,7 @@ const About = () => {
         <div className="flex flex-col py-10">
           <h3 className="subhead-text">My Skills</h3>
 
-          <div className="mt-16 flex flex-wrap gap-12">
+          <div className="mt-16 flex flex-wrap justify-center gap-8 sm:justify-start md:gap-10 lg:gap-12">
             {skills.map((skill, _) => (
               <SkillCard key={skill.name} skill={skill} />
             ))}

@@ -11,7 +11,6 @@ export default defineConfig({
       plugins: [tailwindcss()],
     },
   },
-  base: './',
   server: {
     port: 3000,
   },
@@ -24,4 +23,5 @@ export default defineConfig({
     port: 3000,
   },
   envDir: '../',
+  base: '/',
 });
