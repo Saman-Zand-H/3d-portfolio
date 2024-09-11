@@ -1,14 +1,28 @@
 import { Project } from '../types';
-import { sheetTable, menu, finnotech, cocalc } from '../../../assets/icons';
+import {
+  sheetTable,
+  menu,
+  finnotech,
+  cocalc,
+  home,
+} from '../../../assets/icons';
 
 export const projects: Project[] = [
+  {
+    iconUrl: home,
+    theme: 'btn-back-yellow',
+    name: '3D Portfolio',
+    description:
+      'My personal portfolio, written in React and Three.js, designed to showcase my projects and experiences in a visually appealing manner.',
+    link: 'https://github.com/saman-zand-h/3d-portfolio',
+  },
   {
     iconUrl: sheetTable,
     theme: 'btn-back-red',
     name: 'Django Flex Reports',
     description:
       'Django-Flex-Report is a robust Django package designed for seamless report generation, offering an array of powerful features.',
-    link: 'https://github.com/saman-zand-h/django-flex-reports',
+    link: 'https://github.com/saman-zand-h/django-flex-report',
   },
   {
     iconUrl: menu,

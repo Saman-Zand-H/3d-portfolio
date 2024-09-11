@@ -11,6 +11,9 @@ import {
   python,
   linux,
   materialui,
+  dotnet,
+  csharp,
+  kafka,
   htmx,
   networkx,
   nextjs,
@@ -86,6 +89,14 @@ export const skills: Skill[] = [
     imageUrl: go,
   },
   {
+    name: 'C#',
+    imageUrl: csharp,
+  },
+  {
+    name: '.NET Core',
+    imageUrl: dotnet,
+  },
+  {
     name: 'NetworkX',
     imageUrl: networkx,
   },
@@ -112,6 +123,10 @@ export const skills: Skill[] = [
   {
     name: 'RabbitMQ',
     imageUrl: rabbitmq,
+  },
+  {
+    name: 'Kafka',
+    imageUrl: kafka,
   },
   {
     name: 'Linux',

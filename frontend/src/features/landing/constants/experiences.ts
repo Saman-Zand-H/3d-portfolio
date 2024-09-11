@@ -1,18 +1,67 @@
 import { Experience } from '../types';
 
-import { limerz, connect, hummersBroker, tasmim } from '../../../assets/icons';
+import {
+  limerz,
+  connect,
+  hummersBroker,
+  tasmim,
+  alsafari,
+  sharif,
+  texready,
+} from '../../../assets/icons';
 
 export const experiences: Experience[] = [
   {
-    company_name: 'Hummers Leasing',
-    title: 'Software Engineer & DevOps',
-    date: 'August 2023 - Present',
-    icon: limerz,
-    iconBg: '#ffdd95',
+    company_name: 'AlSafari',
+    title: 'Full Stack Developer',
+    date: 'August 2024 - Present',
+    icon: alsafari,
+    iconBg: '#BFC1C2',
     points: [
-      'Developed web software with Django, managed Linux servers, and established continuous delivery pipeline and data backup protocols.',
-      'Implemented enterprise-level leasing management web software using Django framework for backend and Bootstrap and HTMX for frontend.',
-      'Implemented a feature management and ABAC(Attribute Based Access Control) system in order to evolve this software into a platform.',
+      'Developed a travel and tourism services platform to streamline bookings and improve customer experience.',
+      'Developed a travel and tourism services platform leveraging a variety of design patterns and architecture principles, incorporating Kafka and standard services to ensure scalability and efficiency',
+      'ImplDeveloped the frontend and backoffice of a travel services platform using Vue.js for the user interface and Next.js for the admin panel, demonstrating fluency in both frameworks.',
+      'Developed backend API using ASP.NET Web-API',
+      'Developed a Telegram bot using Python-Telegram-Bot with a modular architecture for better maintainability, designed to handle payment tasks efficiently',
+      'Created detailed task descriptions for features and system architecture analysis as a Systems Analyst',
+    ],
+  },
+  {
+    company_name: 'Sharif University of Technology',
+    title: 'Full Stack Developer',
+    date: 'July 2024 - Present',
+    icon: sharif,
+    iconBg: '#D9D3C2',
+    points: [
+      'Developed web software for compiling and editing LATEX documents, with back-end powered by Node.js, and a front-end utilizing both Angular and React frameworks.',
+      'Leveraged WebSocket technology for real-time updates and seamless communication between users.',
+      'Incorporated version control integration to allow users to track document changes and collaborate efficiently',
+      'Created detailed task descriptions for features and system architecture analysis as a Systems Analyst',
+    ],
+  },
+  {
+    company_name: 'TeX Ready',
+    title: 'Full Stack Developer',
+    date: 'July 2024 - Present',
+    icon: texready,
+    iconBg: '#2A3439',
+    points: [
+      'Developed web software for compiling and editing LATEX documents, with backend powered by Node.js and Go, and a frontend utilizing both Angular and React frameworks',
+      'Implemented real-time features and algorithms such as OT and grammar-check.',
+      'Incorporated version control integration to allow users to track document changes and collaborate efficiently.',
+      'Created detailed task descriptions for features and system architecture analysis as a Systems Analyst.',
+      'Implemented scalable, cloud-based architecture to support simultaneous multi-user collaboration.',
+    ],
+  },
+  {
+    company_name: 'Tasmim Assets Management',
+    title: 'Linux System Administrator',
+    date: 'May 2024 - July 2024',
+    icon: tasmim,
+    iconBg: '#F1E5D1',
+    points: [
+      'Implemented automation scripts for DevOps processes.',
+      'Installed and configured an enterprise mail server.',
       'Maintained server infrastructure to ensure optimal performance and reliability.',
     ],
   },
@@ -23,10 +72,29 @@ export const experiences: Experience[] = [
     icon: connect,
     iconBg: '#6962ad',
     points: [
-      'Developed web software with Django, managed Linux servers, and established continuous delivery pipeline and data backup protocols',
+      'Developed web software with Django, managed Linux servers, and established continuous delivery pipeline and data backup protocols.',
+      'Collaborated on production, emphasizing intuitive UI/UX.',
+      'Designed and implemented optimal and clean database designs for new features.',
+      'Upgraded technologies and UI frameworks to enhance performance and user experience',
       'Made massive refactorings and improved the code structure.',
       'Improved performance, query speed, and security measures to optimize system functionality by a significant amount',
       'Maintained server infrastructure to ensure optimal performance and reliability',
+    ],
+  },
+  {
+    company_name: 'Hummers Leasing',
+    title: 'Software Engineer & DevOps',
+    date: 'August 2023 - Present',
+    icon: limerz,
+    iconBg: '#ffdd95',
+    points: [
+      'Developed web software with Django, managed Linux servers, and established continuous delivery pipeline and data backup protocols.',
+      'Designed and implemented optimal and clean database solutions alongside to meet the use cases',
+      'Implemented automation scripts for DevOps processes',
+      'Implemented automation scripts for generating documentations in LaTeX',
+      'Implemented enterprise-level leasing management web software using Django framework for backend and Bootstrap and HTMX for frontend',
+      'Collaborated on production, emphasizing intuitive UI/UX',
+      'Implemented a feature management and ABAC(Attribute Based Access Control) system in order to evolve this software into a platform',
     ],
   },
   {
@@ -37,18 +105,6 @@ export const experiences: Experience[] = [
     iconBg: '#DBB5B5',
     points: [
       'Implemented automation scripts for DevOps processes.',
-      'Maintained server infrastructure to ensure optimal performance and reliability.',
-    ],
-  },
-  {
-    company_name: 'Tasmim Assets Management',
-    title: 'Linux System Administrator',
-    date: 'May 2024 - Present',
-    icon: tasmim,
-    iconBg: '#F1E5D1',
-    points: [
-      'Implemented automation scripts for DevOps processes.',
-      'Installed and configured an enterprise mail server.',
       'Maintained server infrastructure to ensure optimal performance and reliability.',
     ],
   },

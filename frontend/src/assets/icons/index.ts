@@ -37,7 +37,14 @@ import arrow from './arrow.svg';
 import menu from './menu.svg';
 import connect from './connect-isti.svg';
 import tasmim from './tasmim.svg';
+import home from './home.svg';
 import vue from './vuejs.svg';
+import alsafari from './alsafari.svg';
+import sharif from './sharif.svg';
+import texready from './texready.svg';
+import kafka from './kafka.svg';
+import csharp from './csharp.svg';
+import dotnet from './dotnet.svg';
 
 export {
   nodejs,
@@ -45,11 +52,17 @@ export {
   htmx,
   menu,
   cocalc,
+  sharif,
+  texready,
   limerz,
   connect,
   finnotech,
+  kafka,
+  dotnet,
+  csharp,
   bash,
   sheetTable,
+  home,
   arrow,
   django,
   antdesign,
@@ -59,6 +72,7 @@ export {
   mongodb,
   tasmim,
   javascript,
+  alsafari,
   go,
   docker,
   python,
