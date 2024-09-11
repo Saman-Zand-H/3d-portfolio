@@ -39,6 +39,9 @@ const ExperienceCard = (props: ExperienceCardProps) => {
         >
           {experience.company_name}
         </p>
+        <p>
+          <small>{experience.location}</small>
+        </p>
       </div>
 
       <ul className="my-5 ml-5 list-disc space-y-2">

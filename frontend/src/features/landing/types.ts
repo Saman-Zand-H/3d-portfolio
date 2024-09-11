@@ -5,6 +5,7 @@ export type Skill = {
 
 export type Experience = {
   company_name: string;
+  location: string;
   title: string;
   date: string;
   icon: string;
@@ -30,7 +31,8 @@ export type Education = {
   university: string;
   degree: string;
   field: string;
-  subfield?: string;
+  location: string;
+  subfield: string;
   date: string;
   logo: string;
   iconBg: string;

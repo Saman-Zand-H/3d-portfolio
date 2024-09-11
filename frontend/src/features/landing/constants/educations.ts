@@ -7,6 +7,7 @@ export const educations: Education[] = [
     degree: 'B.Sc.',
     field: 'Electrical Engineering',
     subfield: 'Control Engineering',
+    location: 'Mashhad, Iran',
     date: '2023 - Present',
     logo: fum,
     iconBg: '#F8F8F8',

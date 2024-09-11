@@ -37,6 +37,9 @@ const EducationCard = ({ education }: EducationCardProps) => {
         >
           {education.university}
         </p>
+        <p>
+          <small>{education.location}</small>
+        </p>
         <p className="text-base font-medium text-black-500">
           <small>{education.subfield}</small>
         </p>

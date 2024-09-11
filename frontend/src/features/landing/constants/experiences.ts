@@ -15,6 +15,7 @@ export const experiences: Experience[] = [
     company_name: 'AlSafari',
     title: 'Full Stack Developer',
     date: 'August 2024 - Present',
+    location: 'Dubai, United Arab Emirates',
     icon: alsafari,
     iconBg: '#BFC1C2',
     points: [
@@ -29,6 +30,7 @@ export const experiences: Experience[] = [
   {
     company_name: 'Sharif University of Technology',
     title: 'Full Stack Developer',
+    location: 'Tehran, Iran',
     date: 'July 2024 - Present',
     icon: sharif,
     iconBg: '#D9D3C2',
@@ -43,6 +45,7 @@ export const experiences: Experience[] = [
     company_name: 'TeX Ready',
     title: 'Full Stack Developer',
     date: 'July 2024 - Present',
+    location: 'Tehran, Iran',
     icon: texready,
     iconBg: '#2A3439',
     points: [
@@ -56,6 +59,7 @@ export const experiences: Experience[] = [
   {
     company_name: 'Tasmim Assets Management',
     title: 'Linux System Administrator',
+    location: 'Tehran, Iran',
     date: 'May 2024 - July 2024',
     icon: tasmim,
     iconBg: '#F1E5D1',
@@ -68,6 +72,7 @@ export const experiences: Experience[] = [
   {
     company_name: 'Connect ISTI',
     title: 'Software Engineer & DevOps',
+    location: 'Tehran, Iran',
     date: 'October 2023 - Present',
     icon: connect,
     iconBg: '#6962ad',
@@ -84,6 +89,7 @@ export const experiences: Experience[] = [
   {
     company_name: 'Hummers Leasing',
     title: 'Software Engineer & DevOps',
+    location: 'Tehran, Iran',
     date: 'August 2023 - Present',
     icon: limerz,
     iconBg: '#ffdd95',
@@ -102,6 +108,7 @@ export const experiences: Experience[] = [
     title: 'Linux System Administrator & DevOps',
     date: 'November 2023 - Present',
     icon: hummersBroker,
+    location: 'Tehran, Iran',
     iconBg: '#DBB5B5',
     points: [
       'Implemented automation scripts for DevOps processes.',
