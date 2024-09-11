@@ -26,8 +26,8 @@ type GLTFResult = GLTF & {
   };
 };
 
-type ActionName = 'hit' | 'idle' | 'walk' | 'walk.left';
-type GLTFActions = Record<ActionName, THREE.AnimationAction>;
+// type ActionName = 'hit' | 'idle' | 'walk' | 'walk.left';
+// type GLTFActions = R ecord<ActionName, THREE.AnimationAction>;
 
 type FoxProps = JSX.IntrinsicElements['group'] & {
   currentAnimation: string;

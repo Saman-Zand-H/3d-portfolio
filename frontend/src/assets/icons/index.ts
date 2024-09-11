@@ -39,6 +39,7 @@ import connect from './connect-isti.svg';
 import tasmim from './tasmim.svg';
 import home from './home.svg';
 import vue from './vuejs.svg';
+import fum from './fum.svg';
 import alsafari from './alsafari.svg';
 import sharif from './sharif.svg';
 import texready from './texready.svg';
@@ -53,6 +54,7 @@ export {
   menu,
   cocalc,
   sharif,
+  fum,
   texready,
   limerz,
   connect,

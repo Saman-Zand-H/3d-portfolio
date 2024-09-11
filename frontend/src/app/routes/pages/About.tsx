@@ -4,7 +4,12 @@ import 'react-vertical-timeline-component/style.min.css';
 import ContactCard from '../../../components/ContactCard';
 import SkillCard from '../../../features/landing/components/SkillCard';
 import ExperienceCard from '../../../features/landing/components/ExperienceCard';
-import { skills, experiences } from '../../../features/landing/constants';
+import EducationCard from '../../../features/landing/components/EducationCard';
+import {
+  skills,
+  experiences,
+  educations,
+} from '../../../features/landing/constants';
 
 const About = () => {
   return (
@@ -40,7 +45,7 @@ const About = () => {
         </div>
 
         <div className="py-16">
-          <h3 className="subhead-text">Work Experience.</h3>
+          <h3 className="subhead-text">Work Experience</h3>
           <div className="mt-5 flex flex-col gap-3 text-slate-500">
             <p>
               I've worked with all sorts of companies, leveling up my skills and
@@ -52,6 +57,26 @@ const About = () => {
             <VerticalTimeline>
               {experiences.map((experience, index) => (
                 <ExperienceCard experience={experience} key={index} />
+              ))}
+            </VerticalTimeline>
+          </div>
+        </div>
+
+        <div className="py-16">
+          <h3 className="subhead-text">Education</h3>
+          <div className="mt-5 flex flex-col gap-3 text-slate-500">
+            <p>
+              My education has been a strong foundation, but I've always
+              prioritized hands-on experience in the industry. While I excelled
+              academically, the real learning came from applying that knowledge
+              in real-world challenges. Here's the overview:
+            </p>
+          </div>
+
+          <div className="mt-12 flex">
+            <VerticalTimeline>
+              {educations.map((education, index) => (
+                <EducationCard education={education} key={index} />
               ))}
             </VerticalTimeline>
           </div>

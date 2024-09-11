@@ -25,3 +25,13 @@ export type Stage = {
   link?: string;
   linkText?: string;
 };
+
+export type Education = {
+  university: string;
+  degree: string;
+  field: string;
+  subfield?: string;
+  date: string;
+  logo: string;
+  iconBg: string;
+};
